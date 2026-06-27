@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@vicons/ionicons5": ["../../packages/flare-core-vue-im-ui/node_modules/@vicons/ionicons5"],
+      "flare-core-typescript-sdk": ["../../packages/flare-core-typescript-sdk/src/index.ts"],
+      "flare-core-typescript-sdk/web": ["../../packages/flare-core-typescript-sdk/src/adapters/web/index.ts"],
+      "flare-core-typescript-sdk/tauri": ["../../packages/flare-core-typescript-sdk/src/adapters/tauri/index.ts"],
+      "flare-core-typescript-sdk/*": ["../../packages/flare-core-typescript-sdk/src/*"],
+      "flare-core-vue-im-ui": ["../../packages/flare-core-vue-im-ui/src/index.ts"],
+      "flare-core-vue-im-ui/sdk-lab": ["../../packages/flare-core-vue-im-ui/src/app/components/FlareSdkLabPanel.vue"],
+      "flare-core-vue-im-ui/app": ["../../packages/flare-core-vue-im-ui/src/app/index.ts"],
+      "flare-core-vue-im-ui/app/components/*": ["../../packages/flare-core-vue-im-ui/src/app/components/*"],
+      "flare-core-vue-im-ui/app/style.css": ["../../packages/flare-core-vue-im-ui/src/app/styles/index.css"],
+      "flare-core-vue-im-ui/style.css": ["../../packages/flare-core-vue-im-ui/src/design-system/styles/index.css"],
+      "flare-core-vue-im-ui/theme": ["../../packages/flare-core-vue-im-ui/src/design-system/theme/index.ts"],
+      "flare-core-vue-im-ui/i18n": ["../../packages/flare-core-vue-im-ui/src/shared/i18n/index.ts"],
+      "flare-core-vue-im-ui/contracts": ["../../packages/flare-core-vue-im-ui/src/shared/contracts/index.ts"],
+      "flare-core-vue-im-ui/*": ["../../packages/flare-core-vue-im-ui/src/*"],
+      "markdown-it": ["../../packages/flare-core-vue-im-ui/node_modules/@types/markdown-it/index.d.ts"],
+      "naive-ui": ["../../packages/flare-core-vue-im-ui/node_modules/naive-ui"],
+      "vue": ["../../packages/flare-core-vue-im-ui/node_modules/vue"],
+      "vue-router": ["../../packages/flare-core-vue-im-ui/node_modules/vue-router"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite.config.ts"
+  ]
+}
