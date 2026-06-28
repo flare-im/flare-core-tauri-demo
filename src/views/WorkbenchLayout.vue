@@ -29,6 +29,7 @@ import {
   NModal,
   NSelect,
   NTag,
+  useMessage,
 } from "naive-ui";
 import { useRoute, useRouter } from "vue-router";
 import { FlareStartConversationDialog, FlareWorkbenchShell } from "flare-core-vue-im-ui/components";
@@ -72,6 +73,7 @@ type ChatSearchResultMessage = MessageIdentity & {
 type ChatSearchKindValue = "all" | "text" | "media" | "image" | "video" | "audio" | "file";
 
 const sdk = useFlareSdk();
+const message = useMessage();
 const router = useRouter();
 const route = useRoute();
 const { t, locale, setLocale } = useFlareI18n();
@@ -368,15 +370,23 @@ function selectedChatSearchKinds(): MessageSearchKind[] {
   }
 }
 
-function searchErrorText(error: unknown): string {
+function operationErrorText(error: unknown, fallback: string): string {
   if (error instanceof Error && error.message.trim()) return error.message;
   if (typeof error === "string" && error.trim()) return error;
-  return "搜索服务暂时不可用";
+  return fallback;
+}
+
+function searchErrorText(error: unknown): string {
+  return operationErrorText(error, "搜索服务暂时不可用");
 }
 
 async function buildFromAction(op: string): Promise<void> {
-  await sdk.buildFromComposerAction(op, "");
-  sdkBuildOpen.value = false;
+  try {
+    await sdk.buildFromComposerAction(op, "");
+    sdkBuildOpen.value = false;
+  } catch (error) {
+    message.error(operationErrorText(error, "发送失败"));
+  }
 }
 </script>
 

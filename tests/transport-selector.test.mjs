@@ -19,7 +19,7 @@ function readFromMonorepo(path) {
   return readFileSync(join(monorepoRoot, path), "utf8");
 }
 
-test("tauri enables native transport protocol selection while web stays websocket-only", () => {
+test("tauri enables native transport protocol selection while web and electron stay websocket-only", () => {
   const tauriMain = readFromApp("src/main.ts");
   const electronMain = readFromClientSdk("examples/flare-core-electron-app/src/main.ts");
   const uniMain = readFromClientSdk("examples/flare-core-uni-app/src/main.ts");
@@ -33,8 +33,8 @@ test("tauri enables native transport protocol selection while web stays websocke
   assert.match(tauriMain, /configureAppTransportSelector\(\{\s*enabled:\s*true,/s);
   assert.match(tauriMain, /runtimeStatus:\s*"tauri-native"/);
   assert.match(tauriMain, /tlsCaCertPath:/);
-  assert.match(electronMain, /configureAppTransportSelector\(\{\s*enabled:\s*true,/s);
-  assert.match(electronMain, /runtimeStatus:\s*"electron-native"/);
+  assert.doesNotMatch(electronMain, /configureAppTransportSelector/);
+  assert.match(electronMain, /WebSocket\); WASM has no QUIC/);
   assert.match(uniMain, /isUniNativeTransportRuntime/);
   assert.match(uniMain, /UNI_PLATFORM/);
   assert.match(uniMain, /runtimeStatus:\s*"uni-native"/);
