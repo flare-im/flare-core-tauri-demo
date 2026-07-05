@@ -6,8 +6,8 @@
   "description": "Production-oriented IM app template for flare-core-typescript-sdk/tauri (Tauri desktop).",
   "scripts": {
     "dev": "yarn tauri dev",
-    "dev:renderer": "vite --host 0.0.0.0",
-    "build": "vue-tsc --noEmit -p tsconfig.json && vite build",
+    "dev:renderer": "vite --host 0.0.0.0 --port 1432",
+    "build": "vue-tsc --noEmit -p tsconfig.json && vite build && node ../../scripts/check-vite-bundle-budget.mjs dist 1400",
     "tauri": "RUSTC_WRAPPER= tauri",
     "tauri:build": "yarn tauri build",
     "test": "node --test tests/*.test.mjs",
@@ -23,7 +23,7 @@
     "flare-core-vue-im-ui": "file:../../packages/flare-core-vue-im-ui",
     "markdown-it": "^14.2.0",
     "naive-ui": "^2.44.1",
-    "protobufjs": "^8.5.0",
+    "protobufjs": "^8.6.5",
     "vue": "^3.5.13",
     "vue-router": "^4.6.4"
   },

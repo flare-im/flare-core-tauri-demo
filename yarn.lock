@@ -692,7 +692,7 @@ fdir@^6.4.4, fdir@^6.5.0:
 "flare-core-typescript-sdk@file:../../packages/flare-core-typescript-sdk":
   version "0.2.0"
   dependencies:
-    protobufjs "^8.5.0"
+    protobufjs "^8.6.5"
 
 "flare-core-vue-im-ui@file:../../packages/flare-core-vue-im-ui":
   version "0.1.0"
@@ -823,10 +823,10 @@ postcss@^8.5.15, postcss@^8.5.3:
     picocolors "^1.1.1"
     source-map-js "^1.2.1"
 
-protobufjs@^8.5.0:
-  version "8.6.4"
-  resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-8.6.4.tgz#61c1589f095d096cf89e77d1e6dfa5ca1c0d70bf"
-  integrity sha512-/+XMv9JalknuncEJSwsyEVlwcxVLKx2iaoSUXFZA86MJkdqyOdfrlB1sB7S6aKyUk9tl20YY+SgQe5J2sJHTcg==
+protobufjs@^8.6.5:
+  version "8.6.5"
+  resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-8.6.5.tgz#7709c9ff77914c00010129888e620c9ccf7c294c"
+  integrity sha512-zeE5LPpencAGXvsxyOYmEgJhxzHY8IsmPAFzstZVhDSVT8QH03q6gMZwZRaQGApevZbAL6u28ugs4CC+YKB2jQ==
   dependencies:
     long "^5.3.2"
 

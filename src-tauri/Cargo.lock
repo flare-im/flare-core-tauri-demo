@@ -1429,9 +1429,6 @@ name = "flare-im-core-sdk-bindings-runtime"
 version = "0.1.0"
 dependencies = [
  "flare-im-core-sdk",
- "flare-proto",
- "serde",
- "serde_json",
  "tokio",
 ]
 

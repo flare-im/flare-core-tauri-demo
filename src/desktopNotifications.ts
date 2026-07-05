@@ -15,6 +15,7 @@ import {
 
 let permissionTask: Promise<boolean> | undefined;
 let trayTask: Promise<TrayIcon | null> | undefined;
+let trayUnavailable = false;
 let currentUnreadCount = 0;
 const trayId = "flare-core-tauri-tray";
 
@@ -45,6 +46,7 @@ export function configureTauriDesktopNotifications(): void {
 }
 
 function ensureTrayIcon(): Promise<TrayIcon | null> {
+  if (trayUnavailable) return Promise.resolve(null);
   trayTask ??= (async () => {
     const existing = await TrayIcon.getById(trayId);
     if (existing) {
@@ -81,6 +83,7 @@ function ensureTrayIcon(): Promise<TrayIcon | null> {
     return tray;
   })().catch((error) => {
     trayTask = undefined;
+    trayUnavailable = true;
     console.warn("[flare-tauri] tray_init_failed", error);
     return null;
   });
